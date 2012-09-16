@@ -29,6 +29,7 @@ if (typeof define !== 'function') { var define = require('amdefine')(module) }
 /*jshint browser: true, devel: true, es5: true, globalstrict: true */
 'use strict';
 
+// module variables. TODO - rewrite this so the exported object contains these.
 var gL10nData = {};
 var gTextData = '';
 var gTextProp = 'textContent';
