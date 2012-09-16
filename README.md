@@ -1,9 +1,9 @@
 js-l10n
 =======
 
-Localisation library for [requirejs](http://requirejs.org/), based on code from [WebL10n](https://github.com/fabi1cazenave/webL10n). This is the core localisation engine only, ported to requirejs in a way that is platform-neutral.
+Localisation library for projects using [requirejs](http://requirejs.org/) or [nodejs](http://nodejs.org/), based largely on code from [WebL10n](https://github.com/fabi1cazenave/webL10n). This is the core localisation engine only, ported to requirejs/nodejs in a way that is platform-neutral.
 
-The platform-dependent code is in separate adapter modules - [TODO] for the filesystem under nodejs, and [TODO] for the browser using requirejs.
+The platform-dependent code is in separate adapter modules - [js-l10n-browser](https://github.com/highfellow/js-l10n-browser) for the browser using requirejs), and [js-l10n-node-fs](https://github.com/highfellow/js-l10n-node-fs) for the filesystem under nodejs.
 
 To use this module, you need to choose an adapter that is suitable for your application. The adapter handles loading localisation resource files; everything else is in this module.
 
@@ -16,7 +16,15 @@ Initialisation
 The module exports a function object, L10n, which takes an adapter object as its parameter.
 
 ```
-TODO - example init code.
+window.onload = function() {
+  requirejs(['lib/l10n','lib/l10n-browser'],
+      function(L10n, L10n_Browser) {
+        // initialise L10n with the browser adapter.
+        l10n = new L10n(new L10n_Browser());
+        // now we can start loading locales using l10n.loadResource
+        // ...
+      });
+}
 ```
 
 Methods
