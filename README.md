@@ -41,7 +41,7 @@ Usage
 
 For more information on using 'get', and on the format of the resource files, see: <https://github.com/fabi1cazenave/webL10n>.
 
-For some example code, see [TODO]
+For some example code, see the [browser adapter](https://github.com/highfellow/js-l10n-browser).
 
 LICENSE
 =======
