@@ -1,0 +1,23 @@
+{
+  "author": "Andrew Baxter <andy@highfellow.org> (http://highfellow.org)",
+  "name": "l10n",
+  "description": "Localisation module based on webL10n",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/highfellow/js-l10n.git"
+  },
+  "engines": {
+    "node": "~0.6.10"
+  },
+  "dependencies": {
+    "amdefine": ">=0.0.2"
+  },
+  "main": "l10n.js",
+  "keywords": ["l10n","localisation"],
+  "scripts": {
+  },
+  "devDependencies": {
+  },
+  "optionalDependencies": {}
+}

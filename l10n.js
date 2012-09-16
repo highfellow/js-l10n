@@ -1,3 +1,6 @@
+if (typeof define !== 'function') { var define = require('amdefine')(module) }
+// ^ allow node to load this as a node module.
+
 /** Copyright (c) 2011-2012 Fabien Cazenave, Mozilla.
   *
   * Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -20,7 +23,7 @@
   */
 
 /**
- * Modified for nodejs by Andrew Baxter <andy@highfellow.org>, Aug 2012
+ * Modified for nodejs and requirejs by Andrew Baxter <andy@highfellow.org>, Aug 2012
  **/
 
 /*jshint browser: true, devel: true, es5: true, globalstrict: true */
