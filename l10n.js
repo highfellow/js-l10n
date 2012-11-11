@@ -722,7 +722,7 @@ function substArguments(str, args) {
   return str;
 }
 
-function L10n(adapter) {
+var l10n = {
   // Function object for handling translation API.
   // TODO - could move the global variables into this object.
 
@@ -732,30 +732,33 @@ function L10n(adapter) {
   // lang - language to load from the resource.
   // successCallback - called once a language has been loaded.
   // failureCallback - called if loading fails.
-  this.loadResource = parseResource;
-  this.get = function(key,args,fallback) {
+  loadResource: parseResource,
+  get: function(key,args,fallback) {
     var data = getL10nData(key, args) || fallback;
     if (data) { // XXX double-check this
       return 'textContent' in data ? data.textContent : '';
     }
     return '{{' + key + '}}';
-  };
-  this.getData = function() { return gL10nData;};
-  this.getText = function() { return gTextData;};
+  },
+  getData: function() { return gL10nData;},
+  getText: function() { return gTextData;},
   // get the direction (ltr|rtl) of the current language
-  this.getDirection = function() {
+  getDirection: function() {
     // http://www.w3.org/International/questions/qa-scripts
     // Arabic, Hebrew, Farsi, Pashto, Urdu
     var rtlList = ['ar', 'he', 'fa', 'ps', 'ur'];
     return (rtlList.indexOf(gLanguage) >= 0) ? 'rtl' : 'ltr';
-  };
+  },
   // TODO - is getReadyState needed without the browser code?
-  this.getReadyState = function() { return gReadyState; };
-  gLoader = adapter.getLoader();
+  getReadyState: function() { return gReadyState; },
+  // set the platform-specific adapter.
+  setAdapter: function(adapter, options) {
+    gLoader = adapter.getLoader(options);
+  }
 }
 
 // export the L10n function object as the API.
 define([], // no included libs
     function() {
-      return L10n;
+      return l10n;
     })
