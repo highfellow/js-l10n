@@ -39,7 +39,7 @@ var gLanguage = '';
 var gLoader = null; // resource loader function.
 var gMacros = {};
 var gReadyState = 'loading';
-var gMarkFallbacks;
+var gMarkFallbacks = false;
 
 // read-only setting -- we recommend to load l10n resources synchronously
 var gAsyncResourceLoading = true;
