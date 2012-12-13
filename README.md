@@ -13,18 +13,15 @@ API
 Initialisation
 --------------
 
-The module exports a function object, L10n, which takes an adapter object as its parameter.
+The module exports an object, l10n, which has a method `setAdapter` you can use to set the adapter for your platform. E.g.:
 
 ```
-window.onload = function() {
-  requirejs(['lib/l10n','lib/l10n-browser'],
-      function(L10n, L10n_Browser) {
-        // initialise L10n with the browser adapter.
-        l10n = new L10n(new L10n_Browser());
-        // now we can start loading locales using l10n.loadResource
-        // ...
-      });
-}
+requirejs(['l10n','l10n-browser'],
+  function(l10n, l10nBrowser) {
+    ...
+    l10n.setAdapter(l10nBrowser, {baseURL: 'locales/'});
+    ...
+})
 ```
 
 Methods
@@ -35,6 +32,7 @@ An L10n object has the following methods, for loading resource files, and transl
   * loadResource: function(path, language, successCallback, failureCallback) - Load a language resource - e.g. a properties file. The meaning of 'path' depends on the adapter you are using, and is usually relative to your current path (e.g. an URL).
   * get: function(key, args, fallback) - Return the translation for 'key'. Args contains a dictionary of tokens to replace in the translated string. Fallback is used as the string if no translation is found. This works the same as in webL10n.
   * getDirection: function() - utility function to get the direction of the current language.
+  * setMarkStrings: function() - if you call this in your initialisation code, all localised strings will be marked with ~string~ (where the token was found), or _string_ (where no token was found and the fallback used). This is useful for finding unlocalised strings.
 
 Usage
 -----
